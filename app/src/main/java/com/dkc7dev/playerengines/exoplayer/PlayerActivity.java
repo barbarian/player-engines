@@ -218,7 +218,7 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
     contentUri = intent.getData();
 
     if(contentUri!=null&&"acestream".equalsIgnoreCase(contentUri.getScheme())){
-      contentUri = Uri.parse("http://127.0.0.1:6878/ace/manifest.m3u8?id="+contentUri.getHost());
+      contentUri = Uri.parse("http://127.0.0.1:6878/ace/manifest.m3u8?id="+contentUri.getHost()+"&transcode_audio=1&transcode_mp3=1");
     }
 
     contentType = intent.getIntExtra(CONTENT_TYPE_EXTRA,
