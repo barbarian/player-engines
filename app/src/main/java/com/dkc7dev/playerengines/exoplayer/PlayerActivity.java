@@ -17,12 +17,12 @@ package com.dkc7dev.playerengines.exoplayer;
 
 import android.Manifest.permission;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -82,7 +82,7 @@ import java.util.Locale;
 /**
  * An activity that plays media using {@link DemoPlayer}.
  */
-public class PlayerActivity extends Activity implements SurfaceHolder.Callback, OnClickListener,
+public class PlayerActivity extends AppCompatActivity implements SurfaceHolder.Callback, OnClickListener,
     DemoPlayer.Listener, DemoPlayer.CaptionListener, DemoPlayer.Id3MetadataListener,
     AudioCapabilitiesReceiver.Listener {
 
@@ -138,7 +138,7 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.player_activity);
+    setContentView(R.layout.activity_exo_player);
     View root = findViewById(R.id.root);
     root.setOnTouchListener(new OnTouchListener() {
       @Override
@@ -216,10 +216,6 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
   private void onShown() {
     Intent intent = getIntent();
     contentUri = intent.getData();
-
-    if(contentUri!=null&&"acestream".equalsIgnoreCase(contentUri.getScheme())){
-      contentUri = Uri.parse("http://127.0.0.1:6878/ace/manifest.m3u8?id="+contentUri.getHost()+"&transcode_audio=1&transcode_mp3=1");
-    }
 
     contentType = intent.getIntExtra(CONTENT_TYPE_EXTRA,
         inferContentType(contentUri, intent.getStringExtra(CONTENT_EXT_EXTRA)));
@@ -728,7 +724,7 @@ public class PlayerActivity extends Activity implements SurfaceHolder.Callback, 
    * @param fileExtension An overriding file extension.
    * @return The inferred type.
    */
-  private static int inferContentType(Uri uri, String fileExtension) {
+  public static int inferContentType(Uri uri, String fileExtension) {
     String lastPathSegment = !TextUtils.isEmpty(fileExtension) ? "." + fileExtension
         : uri.getLastPathSegment();
     return Util.inferContentType(lastPathSegment);

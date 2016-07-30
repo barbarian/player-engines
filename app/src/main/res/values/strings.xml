@@ -20,6 +20,7 @@
   <string name="application_name">Player Engines Demo</string>
 
   <string name="exoplayer_name">ExoPlayer Demo</string>
+  <string name="vlcplayer_name">LibVLC Player Demo</string>
 
   <string name="enable_background_audio">Play in background</string>
 

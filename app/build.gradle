@@ -21,8 +21,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:appcompat-v7:24.+'
+    compile 'com.android.support:design:24.+'
+
     compile 'com.google.android.exoplayer:exoplayer:r1.5.9'
     compile 'net.butterflytv.utils:rtmp-client:0.2.1'
+
+    //compile 'de.mrmaffen:vlc-android-sdk:1.9.8'
+
+
+    compile 'io.github.mkjung:vlc-android-sdk-ivi:0.0.1'
 }
